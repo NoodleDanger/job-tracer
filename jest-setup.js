@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /**
  * ************************************
  *
@@ -9,5 +10,5 @@
  * ************************************
  */
 module.exports = async () => {
-  global.testServer = await require('./server/server.js');
+  global.testServer = await require('./server/server');
 };

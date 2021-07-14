@@ -1,3 +1,9 @@
+/* eslint-disable prefer-const */
+/* eslint-disable react/jsx-props-no-spreading */
+/* eslint-disable object-shorthand */
+/* eslint-disable no-use-before-define */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
 /**
  * ************************************
  *
@@ -20,8 +26,8 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import toJson from 'enzyme-to-json';
 
 // Import React components to be tested.
-import JobApplication from '../client/components/JobApplication.js';
-import JobApplicationList from '../client/components/JobApplicationList.js';
+import JobApplication from '../client/components/JobApplication';
+import JobApplicationList from '../client/components/JobApplicationList';
 
 // Newer Enzyme versions require an adapter to a particular version of React.
 configure({ adapter: new Adapter() });

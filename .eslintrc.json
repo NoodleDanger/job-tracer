@@ -1,5 +1,6 @@
 {
   "root": true,
+  "ignorePatterns": ["**/test", "**/__tests__"],
   "env": {
     "browser": true,
     "es2020": true
