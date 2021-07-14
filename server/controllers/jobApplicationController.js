@@ -16,6 +16,7 @@ jobApplicationController.getJobApplications = (req, res, next) => {
   db.query(queryStr)
     .then((data) => {
       // add the data to res.locals
+      // parse data.rows into usuable state objects for frontend.
       res.locals.jobApplications = data.rows;
       return next();
     })

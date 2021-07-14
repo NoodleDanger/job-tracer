@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import { connect } from 'react-redux';
 import JobApplication from './JobApplication';
@@ -13,13 +14,13 @@ function JobApplicationList({ jobApplications, deleteJobApplication }) {
       <h2 className="heading">Application List</h2>
       <div className="list">
         {jobApplications &&
-          jobApplications.map((application) => (
+          jobApplications.map((application, index) => (
             <JobApplication
-              key={`job-${application.id}`}
+              key={`job-${index}`}
               id={application.id}
-              companyName={application.company_name}
-              jobTitle={application.job_title}
-              status={application.status_name}
+              companyName={application.companyName}
+              jobTitle={application.jobTitle}
+              status={application.statusName}
               deleteJobApplication={deleteJobApplication}
             />
           ))}
