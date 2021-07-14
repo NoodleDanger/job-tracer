@@ -1,3 +1,14 @@
+/**
+ * ************************************
+ *
+ * @module JobApplicationList.js
+ * @author
+ * @date 2021-07-14
+ * @description stateful component displaying user's current list of job applications
+ *
+ * ************************************
+ */
+
 import React from 'react';
 import { connect } from 'react-redux';
 import JobApplication from './JobApplication';
