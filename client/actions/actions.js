@@ -1,4 +1,5 @@
 import * as types from '../constants/actionTypes';
+import store from '../store';
 
 export const loadJobApplications = () => (dispatch) => {
   fetch('api/', {
@@ -34,13 +35,16 @@ export const addJobApplication = (data) => (dispatch) => {
         type: types.ADD_JOB_APPLICATION,
         payload: data,
       });
+      store.dispatch(loadJobApplications());
     })
     .catch((err) => {
       // dispatch errors here later...
       console.log(err);
     });
 };
-console.log(addJobApplication)
+
+
+
 export const deleteJobApplication = (id) => (dispatch) => {
   fetch(`api/jobApplication/?id=${id}`, {
     method: 'DELETE',
