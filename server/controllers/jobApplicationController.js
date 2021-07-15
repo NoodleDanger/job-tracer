@@ -16,7 +16,23 @@ jobApplicationController.getJobApplications = (req, res, next) => {
   db.query(queryStr)
     .then((data) => {
       // add the data to res.locals
-      res.locals.jobApplications = data.rows;
+      console.log(data.rows);
+      const frontEndCompatability = data.rows.map((object) => {
+        return {
+          userId: object.user_id,
+          companyName: object.company_name,
+          jobTitle: object.job_title,
+          salary: object.salary,
+          description: object.description,
+          postSource: object.post_source,
+          statusName: object.status_name,
+          notes: object.notes,
+          statusDate: object.status_date,
+          favorite: object.favorite,
+        };
+      });
+      console.log('array for front end: ', frontEndCompatability);
+      res.locals.jobApplications = frontEndCompatability;
       return next();
     })
     .catch((err) => {
@@ -56,24 +72,23 @@ jobApplicationController.createJobApplication = (req, res, next) => {
     statusDate,
     notes,
     favorite,
+    1,
   ];
 
   // make query string
 
-  const queryStr = `
-    INSERT INTO 
-      applications 
-        (company_name,job_title,salary,description,post_source,status_name, status_date, notes, favorite)
-      VALUES 
-        ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+  const queryStr =
+    'INSERT INTO applications (company_name,job_title,salary,description,post_source,status_name, status_date, notes, favorite,user_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)';
 
   // call db query passing in query string and values array
 
   db.query(queryStr, jobApplicationValues)
-    .then(() => {
+    .then((foobar) => {
+      console.log('response from SQL server: ', foobar);
       return next();
     })
     .catch((err) => {
+      console.log(err);
       return next({
         log: 'Express error handler caught error in jobApplicationController.createJobApplication',
         status: 400,
