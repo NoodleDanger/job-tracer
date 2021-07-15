@@ -22,6 +22,8 @@ jobApplicationController.getJobApplications = (req, res, next) => {
       console.log(data.rows);
       const frontEndCompatability = data.rows.map((object) => {
         return {
+          // eslint-disable-next-line no-underscore-dangle
+          id: object._id,
           userId: object.user_id,
           companyName: object.company_name,
           jobTitle: object.job_title,
@@ -174,22 +176,24 @@ jobApplicationController.deleteJobApplicationById = (req, res, next) => {
   // get id from req query
   const { id } = req.query;
 
-  console.log(id);
+  console.log('id of application to delete: ', id);
   // make query string
 
   const queryStr = `
     DELETE FROM 
       applications
     WHERE 
-      id = $1`;
+      _id = $1`;
 
   // query db
 
   db.query(queryStr, [id])
     .then(() => {
+      console.log("we're here, we're queer, and we love chardonnay");
       return next();
     })
     .catch((err) => {
+      console.log('jelly fish are super cool', err);
       return next({
         log: 'Express error handler caught error in jobApplicationController.deleteJobApplication',
         status: 400,

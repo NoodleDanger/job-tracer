@@ -20,7 +20,7 @@ function JobApplicationList({ jobApplications, deleteJobApplication }) {
               companyName={application.companyName}
               jobTitle={application.jobTitle}
               status={application.statusName}
-              deleteJobApplication={deleteJobApplication}
+              deleteJobApplication={() => deleteJobApplication(application.id)}
             />
           ))}
       </div>
