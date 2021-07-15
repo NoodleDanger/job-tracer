@@ -19,7 +19,7 @@ class CreateJobApplicationModal extends React.Component {
         salary: '',
         postSource: '',
         description: '',
-        statusName: '',
+        statusName: 'pending',
         notes: '',
         statusDate: '',
         favorite: false,
