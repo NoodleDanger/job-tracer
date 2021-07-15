@@ -1,9 +1,3 @@
-/* eslint-disable prefer-const */
-/* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable object-shorthand */
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 /**
  * ************************************
  *
@@ -26,8 +20,8 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 import toJson from 'enzyme-to-json';
 
 // Import React components to be tested.
-import JobApplication from '../client/components/JobApplication';
-import JobApplicationList from '../client/components/JobApplicationList';
+import JobApplication from '../client/components/JobApplication.js';
+import JobApplicationList from '../client/components/JobApplicationList.js';
 
 // Newer Enzyme versions require an adapter to a particular version of React.
 configure({ adapter: new Adapter() });
@@ -56,7 +50,7 @@ describe('React unit tests', () => {
 
     const props = {
       id: 10001,
-      jobApplications: [],
+      jobApplications: jobApplicationsArray,
       deleteJobApplication: deleteJobApplication,
     };
 
@@ -70,27 +64,11 @@ describe('React unit tests', () => {
       wrapper = shallow(<JobApplicationList {...props} />);
     });
 
-    // <LabeledText label="Market ID" text={index} />
-    // <LabeledText label="Location" text={location} />
-    // <LabeledText label="Cards" text={cards} />
-    // <LabeledText label="% of total" text={percentage} />
-
-    // TODO: Test the following:
-    // 1. A MarketDisplay should display all of its text props inside a
-    // LabeledText component
-    it('displays all of its text props inside a LabeledText component', () => {
-      // make an array out of LabeledText elements within wrapper
-      const labeledTexts = wrapper
-        .find(LabeledText)
-        .map((node) => node.props().text);
-
-      expect(labeledTexts).toEqual(Object.values(props));
-
-      // expect(wrapper.find('LabeledText').find({label: 'Market ID'}).text()).toMatch(props.index.toString());
-      // expect(wrapper.find('LabeledText').find({label: 'Location'}).text()).toMatch(props.location);
-      // expect(wrapper.find('LabeledText').find({label: 'Cards'}).text()).toMatch(props.cards.toString());
-      // expect(wrapper.find('LabeledText').find({label: '% of total'}).text()).toMatch(props.percentage.toString());
-    });
+      // 1. It should also contain a div with two buttons
+      it('should contain a h2 tag and an inner div', () => {
+        let outterContainer = wrapper.find('h2');
+        expect(outterContainer.find('div')).toHaveLength(1);
+      });
 
     // 2. It should also contain a div with two buttons
     it('should contain a div with two buttons', () => {
