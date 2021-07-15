@@ -16,12 +16,12 @@ class CreateJobApplicationModal extends React.Component {
       details: {
         companyName: '',
         jobTitle: '',
-        salary: '',
+        salary: -1,
         postSource: '',
         description: '',
         statusName: 'pending',
         notes: '',
-        statusDate: '',
+        statusDate: new Date(),
         favorite: false,
       },
     };
@@ -37,12 +37,12 @@ class CreateJobApplicationModal extends React.Component {
       details: {
         companyName: '',
         jobTitle: '',
-        salary: '',
+        salary: -1,
         postSource: '',
         description: '',
-        statusName: '',
+        statusName: 'pending',
         notes: '',
-        statusDate: '',
+        statusDate: new Date(),
         favorite: false,
       },
     });
@@ -107,7 +107,7 @@ class CreateJobApplicationModal extends React.Component {
                 />
               </label>
               <label>
-                Application Status Date:
+                Date:
                 <input
                   type="date"
                   name="statusDate"
