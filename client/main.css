@@ -58,10 +58,12 @@ body {
 .btn-close {
   color: white;
   font-family: 'Jura', sans-serif;
+  font-size: 14px;
   background-color: #3C038C;
 }
 .btn-add {
   font-family: 'Jura', sans-serif;
+  font-size: 14px;
   background: #F205E2;
 }
 
@@ -84,6 +86,12 @@ body {
   margin: 0 auto;
   padding: 24px;
   max-width: 100%;
+}
+
+.computer-field {
+  color: greenyellow;
+  font-family: 'OCR A Std', monospace;
+  background:#020126
 }
 
 .heading {

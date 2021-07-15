@@ -71,7 +71,7 @@ class CreateJobApplicationModal extends React.Component {
               <div className="modal-label">
                 <label>
                   Favorite?:
-                  <select
+                  <select className="computer-field"
                     defaultValue={this.state.details.favorite}
                     name="favorite"
                     onChange={this.formFieldChangeHandler}>
@@ -83,7 +83,7 @@ class CreateJobApplicationModal extends React.Component {
               <div className="modal-label">
                 <label>
                   Company Name:
-                  <input
+                  <input className="computer-field"
                     type="text"
                     name="companyName"
                     value={this.state.details.companyName}
@@ -94,7 +94,7 @@ class CreateJobApplicationModal extends React.Component {
               <div className="modal-label">
                 <label>
                   Job Title:
-                  <input
+                  <input className="computer-field"
                     type="text"
                     name="jobTitle"
                     value={this.state.details.jobTitle}
@@ -105,7 +105,7 @@ class CreateJobApplicationModal extends React.Component {
               <div className="modal-label">
                 <label>
                   Salary:
-                  <input
+                  <input className="computer-field"
                     type="text"
                     name="salary"
                     value={this.state.details.salary}
@@ -116,7 +116,7 @@ class CreateJobApplicationModal extends React.Component {
               <div className="modal-label">
                 <label>
                   Application Status Date:
-                  <input
+                  <input className="computer-field"
                     type="date"
                     name="statusDate"
                     value={this.state.details.statusDate}
@@ -127,7 +127,7 @@ class CreateJobApplicationModal extends React.Component {
               <div className="modal-label">
                 <label>
                   Application Status:
-                  <select
+                  <select className="computer-field"
                     defaultValue={this.state.details.statusName}
                     name="statusName"
                     onChange={this.formFieldChangeHandler}
@@ -145,7 +145,7 @@ class CreateJobApplicationModal extends React.Component {
               <div className="modal-label">
               <label>
                 Post Source:
-                <select
+                <select className="computer-field"
                   defaultValue={this.state.details.postSource}
                   name="postSource"
                   onChange={this.formFieldChangeHandler}>
@@ -157,7 +157,7 @@ class CreateJobApplicationModal extends React.Component {
               <div className="modal-label">
                 <label>
                   Description:
-                  <textarea
+                  <textarea className="computer-field"
                     name="description"
                     value={this.state.details.description}
                     onChange={this.formFieldChangeHandler}
@@ -166,7 +166,7 @@ class CreateJobApplicationModal extends React.Component {
               </div><br></br>
               <label>
                 Notes:
-                <textarea
+                <textarea className="computer-field"
                   name="notes"
                   value={this.state.details.notes}
                   onChange={this.formFieldChangeHandler}
