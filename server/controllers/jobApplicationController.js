@@ -33,6 +33,7 @@ jobApplicationController.getJobApplications = (req, res, next) => {
 jobApplicationController.createJobApplication = (req, res, next) => {
   // get values from the req body
   const {
+    userId,
     companyName,
     jobTitle,
     salary,
@@ -47,6 +48,7 @@ jobApplicationController.createJobApplication = (req, res, next) => {
   // put values in to a new array
 
   const jobApplicationValues = [
+    userId,
     companyName,
     jobTitle,
     salary,
@@ -63,9 +65,9 @@ jobApplicationController.createJobApplication = (req, res, next) => {
   const queryStr = `
     INSERT INTO 
       applications 
-        (company_name,job_title,salary,description,post_source,status_name, status_date, notes, favorite)
+        (user_id, company_name,job_title,salary,description,post_source,status_name, status_date, notes, favorite)
       VALUES 
-        ($1, $2, $3, $4, $5, $6, $7, $8, $9)`;
+        ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
 
   // call db query passing in query string and values array
 
@@ -87,31 +89,36 @@ jobApplicationController.createJobApplication = (req, res, next) => {
 jobApplicationController.updateJobApplicationById = (req, res, next) => {
   // get id from req query
 
-  const { id } = req.query;
-
   // get values from req body
 
   const {
+    userId,
     companyName,
     jobTitle,
     salary,
     description,
     postSource,
+    statusName,
+    statusDate,
     notes,
     favorite,
+    id
   } = req.body;
 
   // add job application id as last array element
 
   const updatedJobApplicationValues = [
+    userId,
     companyName,
     jobTitle,
     salary,
     description,
     postSource,
+    statusName,
+    statusDate,
     notes,
     favorite,
-    id,
+    id
   ];
 
   // make query string
@@ -120,9 +127,9 @@ jobApplicationController.updateJobApplicationById = (req, res, next) => {
     UPDATE
       applications
     SET 
-      company_name = $1,job_title = $2,salary = $3, description = $4,post_source = $5,notes = $6,favorite = $7
+      user_id = $1, company_name = $2,job_title = $3,salary = $4, description = $5,post_source = $6, status_name = $7, status_date = $8, notes = $9,favorite = $10
     WHERE 
-      id = $8  
+      _id = $11  
     `;
 
   //  query db
@@ -153,7 +160,7 @@ jobApplicationController.deleteJobApplicationById = (req, res, next) => {
     DELETE FROM 
       applications
     WHERE 
-      id = $1`;
+      _id = $1`;
 
   // query db
 
