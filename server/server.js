@@ -6,11 +6,7 @@ const apiRouter = require('./routes/api');
 
 const PORT = 3000;
 
-// start server
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server started on port ${PORT}`);
-});
 
 //  handle parsing request body
 
@@ -37,4 +33,9 @@ app.use((err, req, res) => {
   const errorObj = { ...defaultErr, ...err };
   console.log(errorObj.log);
   return res.status(errorObj.status).json(errorObj.message);
+});
+
+
+module.exports = app.listen(PORT, () => {
+  console.log(`🚀 Server started on port ${PORT}`);
 });

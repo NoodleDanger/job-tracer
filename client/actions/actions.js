@@ -40,7 +40,7 @@ export const addJobApplication = (data) => (dispatch) => {
       console.log(err);
     });
 };
-
+console.log(addJobApplication)
 export const deleteJobApplication = (id) => (dispatch) => {
   fetch(`api/jobApplication/?id=${id}`, {
     method: 'DELETE',

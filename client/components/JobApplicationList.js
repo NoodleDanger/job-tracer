@@ -17,9 +17,9 @@ function JobApplicationList({ jobApplications, deleteJobApplication }) {
             <JobApplication
               key={`job-${application.id}`}
               id={application.id}
-              companyName={application.company_name}
-              jobTitle={application.job_title}
-              status={application.status_name}
+              companyName={application.companyName}
+              jobTitle={application.jobTitle}
+              status={application.statusName}
               deleteJobApplication={deleteJobApplication}
             />
           ))}
