@@ -87,7 +87,7 @@ describe('Test API connections', () => {
         favorite: "true",
       };
 
-      it('responds with 200 status and application/json content type', () => request(server)
+      xit('responds with 200 status and application/json content type', () => request(server)
         .post('/api/jobApplication/')
         .send(jobApplicationValues)
         .delete('/api/jobApplication')
