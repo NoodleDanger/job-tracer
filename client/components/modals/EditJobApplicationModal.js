@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
     return el.id === jobAppId;
   });
   const jobApplicationObject = jobApplicationToEditArray[0];
-  console.log(jobApplicationObject);
+  console.log(jobApplicationObject); //  accurate
   return { jobAppId, show, onClose, jobApplicationObject };
 };
 
@@ -73,7 +73,7 @@ class EditJobApplicationModal extends React.Component {
                 <input
                   type="text"
                   name="company_name"
-                  value={this.props.jobApplicationObject.company_name}
+                  value={this.props.jobApplicationObject.companyName}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
@@ -82,7 +82,7 @@ class EditJobApplicationModal extends React.Component {
                 <input
                   type="text"
                   name="job_title"
-                  value={this.props.jobApplicationObject.job_title}
+                  value={this.props.jobApplicationObject.jobTitle}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
@@ -100,7 +100,7 @@ class EditJobApplicationModal extends React.Component {
                 <input
                   type="date"
                   name="status_date"
-                  value={this.props.jobApplicationObject.status_date}
+                  value={this.props.jobApplicationObject.statusDate}
                   onChange={this.formFieldChangeHandler}
                 />
               </label>
@@ -108,7 +108,7 @@ class EditJobApplicationModal extends React.Component {
                 Application Status:
                 <select
                   name="status_name"
-                  value={this.props.jobApplicationObject.status_name}
+                  value={this.props.jobApplicationObject.statusName}
                   onChange={this.formFieldChangeHandler}
                 >
                   <option selected value="pending">
@@ -126,7 +126,7 @@ class EditJobApplicationModal extends React.Component {
                 Post Source:
                 <select
                   name="post_source"
-                  value={this.props.jobApplicationObject.post_source}
+                  value={this.props.jobApplicationObject.postSource}
                   onChange={this.formFieldChangeHandler}
                 >
                   <option selected value="friend">

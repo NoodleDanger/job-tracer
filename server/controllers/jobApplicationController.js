@@ -7,16 +7,37 @@ const jobApplicationController = {};
 
 jobApplicationController.getJobApplications = (req, res, next) => {
   // create query string
+  // get user_id from cookies
+  const userId = 1; // hard coded, please change when users
   const queryStr = `
     SELECT * FROM applications
+    WHERE user_id=$1
     `;
 
   // call db query passing in query string
 
-  db.query(queryStr)
+  db.query(queryStr, [userId])
     .then((data) => {
       // add the data to res.locals
-      res.locals.jobApplications = data.rows;
+      console.log(data.rows);
+      const frontEndCompatability = data.rows.map((object) => {
+        return {
+          // eslint-disable-next-line no-underscore-dangle
+          id: object._id,
+          userId: object.user_id,
+          companyName: object.company_name,
+          jobTitle: object.job_title,
+          salary: object.salary,
+          description: object.description,
+          postSource: object.post_source,
+          statusName: object.status_name,
+          notes: object.notes,
+          statusDate: object.status_date,
+          favorite: object.favorite,
+        };
+      });
+      console.log('array for front end: ', frontEndCompatability);
+      res.locals.jobApplications = frontEndCompatability;
       return next();
     })
     .catch((err) => {
@@ -58,24 +79,33 @@ jobApplicationController.createJobApplication = (req, res, next) => {
     statusDate,
     notes,
     favorite,
+    1,
   ];
 
   // make query string
 
-  const queryStr = `
-    INSERT INTO 
-      applications 
-        (user_id, company_name,job_title,salary,description,post_source,status_name, status_date, notes, favorite)
-      VALUES 
-        ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+  const queryStr = `INSERT INTO applications 
+  (company_name,
+    job_title,
+    salary,
+    description,
+    post_source,
+    status_name, 
+    status_date, 
+    notes, 
+    favorite,
+    user_id) 
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
 
   // call db query passing in query string and values array
 
   db.query(queryStr, jobApplicationValues)
-    .then(() => {
+    .then((foobar) => {
+      console.log('response from SQL server: ', foobar);
       return next();
     })
     .catch((err) => {
+      console.log(err);
       return next({
         log: 'Express error handler caught error in jobApplicationController.createJobApplication',
         status: 400,
@@ -153,7 +183,7 @@ jobApplicationController.deleteJobApplicationById = (req, res, next) => {
   // get id from req query
   const { id } = req.query;
 
-  console.log(id);
+  console.log('id of application to delete: ', id);
   // make query string
 
   const queryStr = `
@@ -166,9 +196,11 @@ jobApplicationController.deleteJobApplicationById = (req, res, next) => {
 
   db.query(queryStr, [id])
     .then(() => {
+      console.log("we're here, we're queer, and we love chardonnay");
       return next();
     })
     .catch((err) => {
+      console.log('jelly fish are super cool', err);
       return next({
         log: 'Express error handler caught error in jobApplicationController.deleteJobApplication',
         status: 400,
