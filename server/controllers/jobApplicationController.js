@@ -8,10 +8,11 @@ const jobApplicationController = {};
 jobApplicationController.getJobApplications = (req, res, next) => {
   // create query string
   // get user_id from cookies
-  const userId = 1; // hard coded, please change when users
+  console.log("USER ID: ", res.locals.userId);
+  const userId = res.locals.userId; // hard coded, please change when users
   const queryStr = `
     SELECT * FROM applications
-    WHERE user_id=$1
+    WHERE auth_id=$1
     `;
 
   // call db query passing in query string
@@ -24,7 +25,7 @@ jobApplicationController.getJobApplications = (req, res, next) => {
         return {
           // eslint-disable-next-line no-underscore-dangle
           id: object._id,
-          userId: object.user_id,
+          userId: object.auth_id,
           companyName: object.company_name,
           jobTitle: object.job_title,
           salary: object.salary,
@@ -52,6 +53,7 @@ jobApplicationController.getJobApplications = (req, res, next) => {
 // create new job application
 
 jobApplicationController.createJobApplication = (req, res, next) => {
+  console.log("in the hole")
   // get values from the req body
   const {
     companyName,
@@ -64,7 +66,7 @@ jobApplicationController.createJobApplication = (req, res, next) => {
     notes,
     favorite,
   } = req.body;
-
+const userId = res.locals.userId;
   // put values in to a new array
 
   const jobApplicationValues = [
@@ -77,7 +79,8 @@ jobApplicationController.createJobApplication = (req, res, next) => {
     statusDate,
     notes,
     favorite,
-    1,
+    userId,
+    1
   ];
 
   // make query string
@@ -92,8 +95,9 @@ jobApplicationController.createJobApplication = (req, res, next) => {
     status_date, 
     notes, 
     favorite,
+    auth_id,
     user_id) 
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)`;
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`;
 
   // call db query passing in query string and values array
 
@@ -203,3 +207,8 @@ jobApplicationController.deleteJobApplicationById = (req, res, next) => {
 };
 
 module.exports = jobApplicationController;
+
+
+
+
+
