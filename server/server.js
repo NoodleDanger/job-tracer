@@ -2,6 +2,7 @@
 const express = require('express');
 const google = require('googleapis').google;
 const jwt = require('jsonwebtoken');
+const path = require('path');
 const OAuth2 = google.auth.OAuth2;
 const CONFIG = require('../config/config.js')
 const cookieParser = require('cookie-parser');
@@ -30,6 +31,10 @@ app.get('/loginUrl', (req,res)=>
 res.status(200).send(loginLink));
 app.get('/',(req,res)=>
 res.redirect(loginLink));
+
+// serve up static assets
+app.use('/assets', express.static(path.join(__dirname, './../', 'client/assets/')));
+
 // catch-all for unknown route requests
 app.get('/auth_callback', function (req, res) {
   // Create an OAuth2 client object from the credentials in our config file

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura&display=swap');
+
 *,
 *::after,
 *::before {
@@ -12,12 +14,15 @@ button {
 }
 
 body {
+  color: white;
   height: 100vh;
+  background-color: #020126;
+  font-family: 'Jura', sans-serif;
 }
 
 .row {
   display: flex;
-  align-items: center;
+  justify-content: center;
 }
 
 .space-around {
@@ -51,17 +56,35 @@ body {
 }
 
 .btn-close {
-  border: 1px solid rgb(45, 45, 156);
+  color: white;
+  font-family: 'Jura', sans-serif;
+  font-size: 14px;
+  background-color: #3C038C;
 }
 .btn-add {
-  background: rgb(72, 134, 72);
+  font-family: 'Jura', sans-serif;
+  font-size: 14px;
+  background: #F205E2;
+}
+
+#btn-add-container {
+  display: flex;
+  justify-content: center;
 }
 
 .btn-delete {
   background: rgb(146, 51, 51);
 }
 
+#dangernoodle-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+
+}
+
 .list {
+  background: #150259;
   border: 1px solid rgba(33, 32, 34, 0.651);
   display: flex;
   flex-direction: column;
@@ -72,11 +95,26 @@ body {
   max-width: 100%;
 }
 
+.computer-field {
+  color: greenyellow;
+  font-family: 'OCR A Std', monospace;
+  background:#020126
+}
+
 .heading {
   text-align: center;
 }
 
+#main-logo-container {
+  display: flex;
+  justify-content: center;
+}
+
 .modal {
-  background-color: grey;
+  background-color: #150259;
   padding: 20px;
+}
+
+.modal-label {
+  margin-bottom: 10px;
 }

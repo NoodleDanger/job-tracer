@@ -68,96 +68,110 @@ class CreateJobApplicationModal extends React.Component {
           </div>
           <div className="modal-body">
             <form>
-              <label>
-                Favorite?:
-                <select
-                  defaultValue={this.state.details.favorite}
-                  name="favorite"
-                  onChange={this.formFieldChangeHandler}
-                >
-                  <option value="false">No</option>
-                  <option value="true">Yes</option>
-                </select>
-              </label>
-              <label>
-                Company Name:
-                <input
-                  type="text"
-                  name="companyName"
-                  value={this.state.details.companyName}
-                  onChange={this.formFieldChangeHandler}
-                />
-              </label>
-              <label>
-                Job Title:
-                <input
-                  type="text"
-                  name="jobTitle"
-                  value={this.state.details.jobTitle}
-                  onChange={this.formFieldChangeHandler}
-                />
-              </label>
-              <label>
-                Salary:
-                <input
-                  type="text"
-                  name="salary"
-                  value={this.state.details.salary}
-                  onChange={this.formFieldChangeHandler}
-                />
-              </label>
-              <label>
-                Date:
-                <input
-                  type="date"
-                  name="statusDate"
-                  value={this.state.details.statusDate}
-                  onChange={this.formFieldChangeHandler}
-                />
-              </label>
-              <label>
-                Application Status:
-                <select
-                  defaultValue={this.state.details.statusName}
-                  name="statusName"
-                  onChange={this.formFieldChangeHandler}
-                >
-                  <option value="pending">Pending</option>
-                  <option value="applied">Applied</option>
-                  <option value="interviewed">Interviewed</option>
-                  <option value="offer_received">Offer Received</option>
-                  <option value="rejected">Rejected</option>
-                  <option value="dropped">Dropped</option>
-                  <option value="accepted">Accepted</option>
-                </select>
-              </label>
+              <div className="modal-label">
+                <label>
+                  Favorite?:
+                  <select className="computer-field"
+                    defaultValue={this.state.details.favorite}
+                    name="favorite"
+                    onChange={this.formFieldChangeHandler}>
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                  </select>
+                </label>
+                </div><br></br>
+              <div className="modal-label">
+                <label>
+                  Company Name:
+                  <input className="computer-field"
+                    type="text"
+                    name="companyName"
+                    value={this.state.details.companyName}
+                    onChange={this.formFieldChangeHandler}
+                  />
+                </label>
+                </div><br></br>
+              <div className="modal-label">
+                <label>
+                  Job Title:
+                  <input className="computer-field"
+                    type="text"
+                    name="jobTitle"
+                    value={this.state.details.jobTitle}
+                    onChange={this.formFieldChangeHandler}
+                  />
+                </label>
+                </div><br></br>
+              <div className="modal-label">
+                <label>
+                  Salary:
+                  <input className="computer-field"
+                    type="text"
+                    name="salary"
+                    value={this.state.details.salary}
+                    onChange={this.formFieldChangeHandler}
+                  />
+                </label>
+              </div><br></br>
+              <div className="modal-label">
+                <label>
+                  Application Status Date:
+                  <input className="computer-field"
+                    type="date"
+                    name="statusDate"
+                    value={this.state.details.statusDate}
+                    onChange={this.formFieldChangeHandler}
+                  />
+                </label>
+                </div><br></br>
+              <div className="modal-label">
+                <label>
+                  Application Status:
+                  <select className="computer-field"
+                    defaultValue={this.state.details.statusName}
+                    name="statusName"
+                    onChange={this.formFieldChangeHandler}
+                  >
+                    <option value="pending">Pending</option>
+                    <option value="applied">Applied</option>
+                    <option value="interviewed">Interviewed</option>
+                    <option value="offer_received">Offer Received</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="dropped">Dropped</option>
+                    <option value="accepted">Accepted</option>
+                  </select>
+                </label>
+              </div><br></br>
+              <div className="modal-label">
               <label>
                 Post Source:
-                <select
+                <select className="computer-field"
                   defaultValue={this.state.details.postSource}
                   name="postSource"
-                  onChange={this.formFieldChangeHandler}
-                >
+                  onChange={this.formFieldChangeHandler}>
                   <option value="friend">Friend</option>
                   <option value="internet">Internet</option>
                 </select>
               </label>
-              <label>
-                Description:
-                <textarea
-                  name="description"
-                  value={this.state.details.description}
-                  onChange={this.formFieldChangeHandler}
-                />
-              </label>
+              </div><br></br>
+              <div className="modal-label">
+                <label>
+                  Description:
+                  <textarea className="computer-field"
+                    name="description"
+                    value={this.state.details.description}
+                    onChange={this.formFieldChangeHandler}
+                  />
+                </label>
+              </div><br></br>
               <label>
                 Notes:
-                <textarea
+                <textarea className="computer-field"
                   name="notes"
                   value={this.state.details.notes}
                   onChange={this.formFieldChangeHandler}
                 />
-              </label>
+              </label><br></br>
               <button
                 className="btn btn-add"
                 type="submit"
