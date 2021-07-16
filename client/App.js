@@ -18,19 +18,24 @@ const App = (props) => {
 
   return (
     <div className="container">
+      <div id="main-logo-container">
+        <img src="http://localhost:3000/assets/main-logo.png"></img>
+      </div>
+      <div id="btn-add-container">
       <button
         className="btn btn-add"
         type="button"
         onClick={() => setShow(true)}
       >
         Create
-      </button>
+      </button></div>
       <CreateJobApplicationModal
         onClose={() => setShow(false)}
         show={show}
         addJobApplication={addJobApplication}
       />
       <JobApplicationList jobApplications={props.jobApplications} />
+      <div id="dangernoodle-logo"><img src="http://localhost:3000/assets/dangernoodle-labs_logo.png" width="300px"></img></div>
     </div>
   );
 };

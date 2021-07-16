@@ -3,6 +3,7 @@ const express = require('express');
 
 const app = express();
 const apiRouter = require('./routes/api');
+const path = require('path');
 
 const PORT = 3000;
 
@@ -15,6 +16,9 @@ app.use(express.json());
 // define route handlers
 
 app.use('/api', apiRouter);
+
+// serve up static assets
+app.use('/assets', express.static(path.join(__dirname, './../', 'client/assets/')));
 
 // catch-all for unknown route requests
 
