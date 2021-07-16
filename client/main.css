@@ -76,6 +76,13 @@ body {
   background: rgb(146, 51, 51);
 }
 
+#dangernoodle-logo {
+  display: flex;
+  justify-content: center;
+  margin-top: 150px;
+
+}
+
 .list {
   background: #150259;
   border: 1px solid rgba(33, 32, 34, 0.651);

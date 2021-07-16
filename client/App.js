@@ -35,6 +35,7 @@ const App = (props) => {
         addJobApplication={addJobApplication}
       />
       <JobApplicationList jobApplications={props.jobApplications} />
+      <div id="dangernoodle-logo"><img src="http://localhost:3000/assets/dangernoodle-labs_logo.png" width="300px"></img></div>
     </div>
   );
 };
