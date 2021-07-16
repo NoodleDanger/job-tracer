@@ -2,14 +2,14 @@ const express = require('express');
 
 const router = express.Router();
 const jobApplicationController = require('../controllers/jobApplicationController');
-
+const setUserId = require('../controllers/authController')
 /**
  * @route GET /api/
  * @desc GET all job applications
  * @access Public
  */
-
-router.get('/', jobApplicationController.getJobApplications, (req, res) => {
+console.log("setUserId should be function: ",setUserId);
+router.get('/', setUserId.setUserId, jobApplicationController.getJobApplications, (req, res) => {
   res.status(200).json(res.locals.jobApplications);
 });
 
@@ -21,6 +21,7 @@ router.get('/', jobApplicationController.getJobApplications, (req, res) => {
 
 router.post(
   '/jobApplication',
+  setUserId.setUserId,
   jobApplicationController.createJobApplication,
   (req, res) => {
     res.status(200).json({});
@@ -35,6 +36,7 @@ router.post(
 
 router.put(
   '/jobApplication',
+  setUserId.setUserId,
   jobApplicationController.updateJobApplicationById,
   (req, res) => {
     res.status(200).json({});
@@ -49,6 +51,7 @@ router.put(
 
 router.delete(
   '/jobApplication',
+  setUserId.setUserId,
   jobApplicationController.deleteJobApplicationById,
   (req, res) => {
     res.status(200).json({});
